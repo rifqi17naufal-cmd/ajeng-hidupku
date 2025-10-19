@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Untukmu, Sayang ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1: #ffd7ea;
+      --bg2: #efc7ff;
+      --accent: #ff5ca8;
+      --white: #ffffff;
+      --glass: rgba(255,255,255,0.6);
+      --card-radius: 18px;
+      --transition: 400ms cubic-bezier(.2,.9,.3,1);
+    }
+    *{box-sizing:border-box;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial;}
+    html,body{height:100%;margin:0;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:#333}
+    .container{max-width:920px;margin:28px auto;padding:24px}
+    header{display:flex;align-items:center;gap:16px}
+    .title{font-family:Pacifico, cursive;font-size:36px;color:#7a0b6f}
+    nav{margin-left:auto}
+    nav button{background:transparent;border:none;padding:8px 12px;border-radius:12px;font-weight:600;cursor:pointer;transition:var(--transition)}
+    nav button:hover{transform:translateY(-3px);}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.75));backdrop-filter:blur(6px);padding:22px;border-radius:var(--card-radius);box-shadow:0 8px 30px rgba(0,0,0,0.08);transition:var(--transition)}
+    .hidden{display:none}
+    .section{padding:12px}
+    label{display:block;margin-top:12px;font-weight:600}
+    input[type="text"], textarea{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin-top:6px}
+    .small{font-size:13px;color:#6b6b6b}
+    .btn{display:inline-block;padding:10px 18px;border-radius:12px;border:none;background:linear-gradient(90deg,#ff8fc6,#c48cff);color:white;font-weight:700;cursor:pointer;transition:var(--transition)}
+    .muted{opacity:0.85}
+    .hearts{position:fixed;right:10px;top:10px;height:200px;width:120px;pointer-events:none}
+    .heart{position:absolute;opacity:0.9;animation:float 6s infinite}
+    @keyframes float{0%{transform:translateY(0) scale(.9)}50%{transform:translateY(-28px) scale(1)}100%{transform:translateY(0) scale(.9)}}
+    .page-nav{display:flex;gap:8px;margin-top:18px}
+    .questions li{margin:10px 0}
+    .commit-list{list-style:decimal;margin-left:18px}
+    /* runaway button */
+    .run-wrap{position:relative;height:220px}
+    .run-btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);}
+  </style>
+</head>
+<body>
+  <div class="hearts" aria-hidden>
+    <svg class="heart" style="left:10px;top:10px;width:40px;animation-duration:5s" viewBox="0 0 24 24" fill="#ff7ab7"><path d="M12 21s-8-5.4-8-10.6S8 4 12 8c4-4 8 1.8 8 2.4S12 21 12 21z"/></svg>
+    <svg class="heart" style="left:40px;top:60px;width:28px;animation-duration:7s"viewBox="0 0 24 24" fill="#ffb1d9"><path d="M12 21s-8-5.4-8-10.6S8 4 12 8c4-4 8 1.8 8 2.4S12 21 12 21z"/></svg>
+    <svg class="heart" style="left:6px;top:110px;width:20px;animation-duration:6s"viewBox="0 0 24 24" fill="#ff9fd2"><path d="M12 21s-8-5.4-8-10.6S8 4 12 8c4-4 8 1.8 8 2.4S12 21 12 21z"/></svg>
+  </div>
+
+  <div class="container card">
+    <header>
+      <div>
+        <div class="title">Untukmu, Sayang ❤️</div>
+        <div class="small">Sebuah kejutan manis untuk dia — dibuat khusus olehmu.</div>
+      </div>
+      <nav>
+        <button data-goto="1">Beranda</button>
+        <button data-goto="2">Pertanyaan</button>
+        <button data-goto="3">Komitmen</button>
+        <button data-goto="4">Puisi</button>
+        <button data-goto="5">Kirim!</button>
+      </nav>
+    </header>
+
+    <!-- Page 1: Form nama -->
+    <main>
+      <section id="page-1" class="section">
+        <h2>Halo! Isi dulu namanya ya 💕</h2>
+        <p class="small">Nama kalian akan ditampilkan di halaman berikutnya. Wajib diisi agar lebih personal.</p>
+        <form id="names-form">
+          <label>Namanya (dia) <span style="color:#c12a7b">*</span>
+            <input type="text" id="name-her" required placeholder="mis. Ayu" />
+          </label>
+          <label>Namamu <span style="color:#c12a7b">*</span>
+            <input type="text" id="name-him" required placeholder="mis. Faris" />
+          </label>
+          <div style="margin-top:14px">
+            <button class="btn" type="submit">Simpan & Lanjutkan</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Page 2: Pertanyaan romantis -->
+      <section id="page-2" class="section hidden">
+        <h2>Pertanyaan Romantis untuk <span id="her-name-1">[Namanya]</span> 💌</h2>
+        <p class="small">Isi jawabanmu di sini — ketika selesai, kirim jawaban ini ke WhatsApp dia.</p>
+        <ol class="questions">
+          <li>
+            <strong>1. Apa momen terspesial yang pernah kita lalui menurutmu?</strong>
+            <textarea id="q1" rows="2" placeholder="Jawabanmu..."></textarea>
+          </li>
+          <li>
+            <strong>2. Sebutkan 3 hal sederhana yang membuatmu jatuh cinta padaku.</strong>
+            <textarea id="q2" rows="2" placeholder="Jawabanmu..."></textarea>
+          </li>
+          <li>
+            <strong>3. Bagaimana kamu membayangkan masa depan kita 5 tahun lagi?</strong>
+            <textarea id="q3" rows="2" placeholder="Jawabanmu..."></textarea>
+          </li>
+          <li>
+            <strong>4. Ada kebiasaan kecilku yang menurutmu paling manis apa?</strong>
+            <textarea id="q4" rows="2" placeholder="Jawabanmu..."></textarea>
+          </li>
+          <li>
+            <strong>5. Kalau boleh minta satu janji dari kamu, apa yang akan kamu janjikan?</strong>
+            <textarea id="q5" rows="2" placeholder="Jawabanmu..."></textarea>
+          </li>
+        </ol>
+
+        <div style="margin-top:12px">
+          <button id="send-wa" class="btn">Kirim Jawaban ke WhatsApp</button>
+          <span class="small muted">(akan membuka WhatsApp dengan pesan yang terisi otomatis ke +62 832-6198-3900)</span>
+        </div>
+      </section>
+
+      <!-- Page 3: Komitmen -->
+      <section id="page-3" class="section hidden">
+        <h2>5 Komitmenku untuk <span id="her-name-2">[Namanya]</span> 🤝</h2>
+        <p class="small">Janji-janji nyata sebagai tanda keseriusanku.</p>
+        <ol class="commit-list">
+          <li id="c1">Menjadi pendengar setia setiap kali kamu butuh tempat curhat dan selalu mencari solusi bersama.</li>
+          <li id="c2">Mengutamakan kejujuran dalam setiap hal, sekecil apapun, agar hubungan kita selalu jujur dan kuat.</li>
+          <li id="c3">Mendukung impianmu dan bekerja bersama untuk mewujudkan masa depan yang kita impikan.</li>
+          <li id="c4">Memberi waktu berkualitas secara rutin — kencan, jalan-jalan, dan momen sederhana yang hangat.</li>
+          <li id="c5">Menjaga komitmen dan bertumbuh bersama, belajar dari masalah dan menjadi versi terbaik untukmu.</li>
+        </ol>
+      </section>
+
+      <!-- Page 4: Puisi/Kata-kata -->
+      <section id="page-4" class="section hidden">
+        <h2>Untukmu, Puisi dari Hatiku ✨</h2>
+        <div id="poem" class="card small" style="margin-top:12px;line-height:1.6">
+          <!-- JS akan mengisi puisi agar memakai nama yang sudah dimasukkan -->
+        </div>
+      </section>
+
+      <!-- Page 5: Tombol Kirim (lari-lari) -->
+      <section id="page-5" class="section hidden">
+        <h2>Sudah siap? Tekan tombol kirim kalau berani 😈</h2>
+        <p class="small">Tapi ingat... tombolnya suka lari-lari biar dia kesel — lucu kan?</p>
+        <div class="run-wrap card" style="display:flex;align-items:center;justify-content:center">
+          <button id="runBtn" class="btn run-btn">Kirim</button>
+        </div>
+        <p class="small muted" style="margin-top:12px">Kalau nggak mau tombol lari-lari, tahan tombol shift lalu klik — tapi itu curang 😜</p>
+      </section>
+    </main>
+
+    <footer style="margin-top:18px;text-align:center;font-size:13px;color:#6b6b6b">
+      Dibuat dengan ❤️ untuk pacarmu. File ini satu halaman (single-file) — tinggal upload ke GitHub.
+    </footer>
+  </div>
+
+  <script>
+    // basic SPA navigation
+    const gotoButtons = document.querySelectorAll('nav button');
+    gotoButtons.forEach(b=>b.addEventListener('click', ()=>showPage(Number(b.dataset.goto))));
+    function showPage(n){
+      for(let i=1;i<=5;i++){document.getElementById('page-'+i).classList.add('hidden');}
+      document.getElementById('page-'+n).classList.remove('hidden');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    // require names
+    const namesForm = document.getElementById('names-form');
+    namesForm.addEventListener('submit', e=>{
+      e.preventDefault();
+      const her = document.getElementById('name-her').value.trim();
+      const him = document.getElementById('name-him').value.trim();
+      if(!her || !him) return alert('Isi kedua nama dulu ya.');
+      // fill names
+      document.getElementById('her-name-1').textContent = her;
+      document.getElementById('her-name-2').textContent = her;
+      fillPoem(her, him);
+      showPage(2);
+    });
+
+    // WhatsApp send
+    const sendBtn = document.getElementById('send-wa');
+    const WA_NUMBER = '6283261983900'; // sesuai permintaan
+    sendBtn.addEventListener('click', ()=>{
+      const her = document.getElementById('name-her').value.trim() || '[Namanya]';
+      const him = document.getElementById('name-him').value.trim() || '[Namamu]';
+      const answers = [
+        document.getElementById('q1').value.trim(),
+        document.getElementById('q2').value.trim(),
+        document.getElementById('q3').value.trim(),
+        document.getElementById('q4').value.trim(),
+        document.getElementById('q5').value.trim(),
+      ];
+      // build message
+      let msg = `Hai ${her}! Ini jawaban dari ${him} untuk pertanyaan romantis kita:\n\n`;
+      msg += `1) Apa momen terspesial...\n${answers[0] || '-'}\n\n`;
+      msg += `2) 3 hal sederhana...\n${answers[1] || '-'}\n\n`;
+      msg += `3) Bayangan 5 tahun...\n${answers[2] || '-'}\n\n`;
+      msg += `4) Kebiasaan manisku...\n${answers[3] || '-'}\n\n`;
+      msg += `5) Janji yang kuberikan...\n${answers[4] || '-'}\n\n`;
+      msg += `Salam sayang, ${him} ❤️`;
+      const url = `https://wa.me/${WA_NUMBER}?text=` + encodeURIComponent(msg);
+      window.open(url,'_blank');
+    });
+
+    // poem filler
+    function fillPoem(her, him){
+      const poem = `Di setiap senyummu, ${her}, aku menemukan rumah.
+Di setiap tatapan, aku baca janji yang tak perlu kata.
+Aku, ${him}, berjanji menjaga pelan-pelan asa kita—
+menanam tawa, merawat harap, dan menjemput mimpi bersamamu.
+
+Bersamamu, hari-hari biasa jadi istimewa.
+Terimalah seuntai kata sederhana ini: aku memilihmu, selalu.`;
+      document.getElementById('poem').textContent = poem;
+    }
+
+    // runaway button behavior
+    const runBtn = document.getElementById('runBtn');
+    const wrap = document.querySelector('.run-wrap');
+    let locked = false;
+
+    function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
+
+    function moveButton(ev){
+      if(locked) return;
+      const rect = wrap.getBoundingClientRect();
+      const btnRect = runBtn.getBoundingClientRect();
+      const padding = 12;
+      const maxX = rect.width - btnRect.width - padding;
+      const maxY = rect.height - btnRect.height - padding;
+      const x = rand(padding, Math.max(padding, Math.floor(maxX)));
+      const y = rand(padding, Math.max(padding, Math.floor(maxY)));
+      runBtn.style.left = x + 'px';
+      runBtn.style.top = y + 'px';
+    }
+
+    // move on hover, unless user holds Shift
+    runBtn.addEventListener('mouseover', (e)=>{
+      if(e.shiftKey) locked = true; else locked = false;
+      moveButton();
+    });
+    // also on mousemove inside wrap (to be extra annoying)
+    wrap.addEventListener('mousemove',(e)=>{
+      if(e.shiftKey) locked = true; else locked = false;
+      const bbox = wrap.getBoundingClientRect();
+      // only trigger when cursor is close to button center
+      const b = runBtn.getBoundingClientRect();
+      const dx = Math.abs(e.clientX - (b.left + b.width/2));
+      const dy = Math.abs(e.clientY - (b.top + b.height/2));
+      if(dx < 80 && dy < 80 && !locked) moveButton();
+    });
+
+    // allow click (it will still run away, but user can click fast)
+    runBtn.addEventListener('click', ()=>{
+      alert('Dikirim... (ini cuma demo; kamu bisa ubah tindakan di kode untuk melakukan apa pun saat diklik)');
+    });
+
+    // keyboard navigation for accessibility
+    document.addEventListener('keydown',(e)=>{
+      if(e.key === 'Escape') showPage(1);
+    });
+  </script>
+</body>
+</html>
